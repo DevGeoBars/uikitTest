@@ -1,0 +1,50 @@
+@layer reset {
+  :root {
+    --input-background-default: var(--authorization-parameters-input-box-background);
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+  }
+  * {
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--colors-palette-primary-gray-250);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--colors-palette-primary-gray-400);
+    }
+
+    input[type="text"] {
+      background: transparent;
+    }
+  }
+
+  *:not(input), *:not(textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px var(--authorization-parameters-input-box-background) inset !important;
+      -webkit-text-fill-color: var(--authorization-parameters-text-parameter) !important;
+      background-color: var(--authorization-parameters-input-box-background) !important;
+    }
+  }
+}

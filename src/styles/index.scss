@@ -1,0 +1,79 @@
+@layer reset, kit, app;
+
+@import 'reset.css' layer(reset);
+@import '@tflex/uikit/uikit.css' layer(kit);
+
+
+
+@layer app {
+  :root {
+    /* Основные цвет темы */
+    --pr1: var(--colors-palette-primary-blue-250); /* Основной цвет темы */
+    --pr3: var(--colors-palette-primary-blue-150); /* Основной цвет темы светлый  */
+    --pr2: var(--colors-palette-primary-blue-200); /* Основной цвет темы disabled */
+
+    /* Текстовые цвета */
+    --sc1: var(--colors-palette-primary-gray-850); /* Основной цвет текста */
+    --sc2: var(--colors-palette-primary-gray-600); /* Цвет текста дополнительный */
+    --sc3: var(--colors-palette-primary-gray-500); /* Цвет текста :hover */
+    --sc4: var(--colors-palette-primary-gray-400); /* Цвет текста disabled */
+
+    /* Фоновые цвета */
+    --bg1: var(--colors-palette-primary-white);  /* Основной цвет фона */
+    --bg2: var(--colors-palette-primary-gray-100); /* Цвет фона дополнительный */
+    --bg3: var(--colors-palette-primary-gray-200);  /* Цвет фона :hover */
+    --bg4: var(--colors-palette-primary-gray-400);  /* Цвет фона :disabled */
+    --input-background-default: var(--input-background-default);  /* Цвет фона инпутов */
+
+    /* Разделители */
+    --border: var(--colors-palette-primary-gray-300);
+    --border-disabled: var(--colors-palette-primary-gray-200);
+  }
+  :root[data-theme="dark"] {
+    /* Основные цвет темы */
+    --pr1: var(--colors-palette-primary-blue-250); /* Основной цвет темы */
+    --pr3: var(--colors-palette-primary-blue-150); /* Основной цвет темы светлый  */
+    --pr2: var(--colors-palette-primary-blue-200); /* Основной цвет темы disabled */
+
+    /* Текстовые цвета */
+    --sc1: var(--d-gray-50); /* Основной цвет текста */
+    --sc2: var(--d-blue-50); /* Цвет текста дополнительный */
+    --sc3: var(--d-blue-100); /* Цвет текста :hover */
+    --sc4: var(--d-blue-150); /* Цвет текста disabled */
+
+    /* Фоновые цвета */
+    --bg1: var(--d-blue-400-transparent-50);  /* Основной цвет фона */
+    --bg2: var(--d-blue-350); /* Цвет фона дополнительный */
+    --bg3: var(--d-blue-200);  /* Цвет фона :hover */
+    --bg4: var(--d-blue-100);  /* Цвет фона :disabled */
+    --input-background-default: var(--d-blue-300);  /* Цвет фона инпутов */
+
+    /* Разделители */
+    --border: var(--colors-palette-primary-gray-800);
+    --border-disabled: var(--colors-palette-primary-gray-900);
+  }
+
+  html {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg1);
+    color: var(--sc1);
+
+    font: var(--font-weight-regular) 10px var(--sans);
+    --sans: system-ui, var(--font-family), Roboto, sans-serif;
+    --heading: system-ui, var(--font-segoe-ui-symbol), Roboto, sans-serif;
+    --mono: ui-monospace, Consolas, monospace;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body, #root {
+    height: 100%;
+    width: 100%;
+    font-size: var(--font-size-14);
+    overflow: hidden;
+  }
+
+}
