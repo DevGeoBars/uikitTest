@@ -4,7 +4,7 @@
 import FOLDER_LOGO from '@/assets/folderSSO.svg'
 
 import type { TGridColumnConfig } from "@tflex/uikit";
-import type { ProjectItemSimple } from "@/models";
+import type { ProjectItemSimple, ProjectItemTreeSimple } from "@/models";
 
 const INFO_GROUP_TITLE = 'Основная информация'
 const DATES_GROUP_TITLE = 'Сроки'
@@ -97,6 +97,7 @@ export const columnsTree: TGridColumnConfig<Partial<ProjectItemTreeSimple>>[] =
       key: 'photo',
       header: 'Фото',
       width: 'min-content',
+      draggable: true,
       cell: (props) => {
         return (
           <div
@@ -109,18 +110,21 @@ export const columnsTree: TGridColumnConfig<Partial<ProjectItemTreeSimple>>[] =
       isTreeColumn: true,
     },
     {
+      draggable: true,
       groupTitle: INFO_GROUP_TITLE,
       header: 'Наименование',
       key: 'name',
       width: 'min-content',
     },
     {
+      draggable: true,
       groupTitle: INFO_GROUP_TITLE,
       header: 'ФИО',
       key: 'responsiblePerson',
       width: 'minmax(200px, 1fr)',
     },
     {
+      draggable: true,
       groupTitle: INFO_GROUP_TITLE,
       header: 'Тип',
       key: 'type',
@@ -128,6 +132,7 @@ export const columnsTree: TGridColumnConfig<Partial<ProjectItemTreeSimple>>[] =
     },
 
     {
+      draggable: true,
       groupTitle: INFO_GROUP_TITLE,
       header: 'Обозначение',
       key: 'denotation',

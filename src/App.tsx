@@ -10,7 +10,7 @@ import {
   TreeList,
   TreeListClassic,
 } from '@/components'
-import { TreeView } from '@/components/TreeView'
+
 
 function App() {
   const componentRef = useRef<any>(null)
@@ -34,7 +34,7 @@ function App() {
         ) : type === 'treeListClassic' ? (
           <TreeListClassic />
         ) : (
-          <TreeView />
+          <>as</>
         )}
       </div>
       <div className={'footer'}>
