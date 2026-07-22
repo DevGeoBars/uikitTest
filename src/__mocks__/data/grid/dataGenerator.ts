@@ -39,9 +39,10 @@ export const generateProjects = (
     'Обучить персонал',
   ]
 
+
   return Array.from({ length: count }, (_, i) => ({
-    id: page ? `${100 + i + page}` : `${100 + i}`,
-    guid: page ? `${100 + i + page}` : `${100 + i}`,
+    id: page ? `${(100 * page) + i }` : `${100 + i}`,
+    guid: page ? `${(100 * page) + i }` : `${100 + i}`,
     name: projectNames[i % projectNames.length] + ` ${Math.floor(i / 10) + 1}`,
     denotation: `${denotations[i % denotations.length]}-${
       2024 + Math.floor(i / denotations.length)

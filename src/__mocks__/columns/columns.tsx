@@ -12,6 +12,12 @@ const EFFECT_GROUP_TITLE = 'Прогресс'
 
 export const columns: TGridColumnConfig<Partial<ProjectItemSimple>>[] = [
   {
+    key: 'id',
+    header: 'ID',
+    width: 'min-content',
+    isTreeColumn: true,
+  },
+  {
     key: 'photo',
     header: 'Фото',
     width: 'min-content',

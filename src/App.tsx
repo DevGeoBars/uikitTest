@@ -10,6 +10,8 @@ import {
   TreeList,
   TreeListClassic,
 } from '@/components'
+import { useConfig } from "@/components/hooks/useConfig";
+import { generateProjects } from "@/__mocks__";
 
 
 function App() {
