@@ -1,9 +1,8 @@
 import { Grid } from '@tflex/uikit'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { generateProjects } from '@/__mocks__'
 import { useConfig } from '@/components/hooks/useConfig'
-import type { ProjectItemSimple } from "@/models";
 
 export const DataGridClassic = () => {
   const [data, setData] = useState(generateProjects(100, 1))
@@ -18,7 +17,7 @@ export const DataGridClassic = () => {
       pageSize={100}
       totalCount={1000}
       scrollPagination={true}
-      onPageChange={async (page, callbacks) => {
+      onPageChange={async (page) => {
         const objects = generateProjects(100, page)
         console.log('onPageChange',objects, page);
         setData((prev) => [...prev, ...objects])
