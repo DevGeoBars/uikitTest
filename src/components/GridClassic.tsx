@@ -1,5 +1,5 @@
-import { Grid } from '@tflex/uikit'
 import { useState } from 'react'
+import { Grid } from '@tflex/uikit'
 
 import { generateProjects } from '@/__mocks__'
 import { useConfig } from '@/components/hooks/useConfig'
