@@ -11,7 +11,7 @@ export const TreeListClassic = () => {
   const { config } = useTreeConfig()
 
   return (
-    <div style={{display: 'flex'}}>
+    <div style={{display: 'flex', flexDirection: 'column'}}>
       <Button
         onClick={() => {
           console.log('classicTreeRef, 1-106',gridRef)
@@ -20,7 +20,7 @@ export const TreeListClassic = () => {
             gridRef.current.jumpTo('1-108');
           }
         }}>
-        j
+        jumpTo 106
       </Button>
 
       <ClassicTree
@@ -30,11 +30,9 @@ export const TreeListClassic = () => {
         data={data}
         config={{ ...config, columnDrag: true }}
         dragAndDrop={false}
-
         treeConfig={{
           parentKey: 'parent',
           expandedDefault: ['2'],
-
           childrenSource: 'parent',
           onExpand: async (item) => {
             const children = await generateChildren(item, 200)
@@ -43,10 +41,6 @@ export const TreeListClassic = () => {
         }}
         selectedRowIds={selected}
         selectableRows={true}
-
-        onSelect={(item) => {
-          console.log('selectedRowIds ',item)
-        }}
       />
     </div>
   )

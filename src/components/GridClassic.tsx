@@ -20,7 +20,7 @@ export const DataGridClassic = () => {
       scrollPagination={true}
       onPageChange={async (page, callbacks) => {
         const objects = generateProjects(100, page)
-        console.log('onPageChange',objects)
+        console.log('onPageChange',objects, page);
         setData((prev) => [...prev, ...objects])
         setPage(page)
       }}
