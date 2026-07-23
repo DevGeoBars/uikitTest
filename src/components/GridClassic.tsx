@@ -7,21 +7,22 @@ import type { ProjectItemSimple } from "@/models";
 
 export const DataGridClassic = () => {
   const [data, setData] = useState(generateProjects(100, 1))
+  const [page, setPage] = useState(1)
   const { config } = useConfig()
-
-  console.log('DataGridClassic')
 
   return (
     <Grid
       data={data}
       config={config}
-      page={1}
+      page={page}
       pageSize={100}
       totalCount={1000}
       scrollPagination={true}
       onPageChange={async (page, callbacks) => {
         const objects = generateProjects(100, page)
+        console.log('onPageChange',objects)
         setData((prev) => [...prev, ...objects])
+        setPage(page)
       }}
       dragAndDrop={false}
     />
