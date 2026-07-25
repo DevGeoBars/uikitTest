@@ -9,7 +9,7 @@ export const generateTreeProjects = (): Partial<ProjectItemTreeSimple>[] => {
       id: `${i}`,
       guid: `${i}`,
       name: `Корневой проект ${i}`,
-      parent: null,
+      parentId: null,
       type: i === 1 ? 'Портфель' : i === 2 ? 'Проект' : 'Программа',
       denotation: `ROOT-${i}`,
       responsiblePerson: `Руководитель ${i}`,
@@ -23,7 +23,7 @@ export const generateTreeProjects = (): Partial<ProjectItemTreeSimple>[] => {
       id: `${10 + i}`,
       guid: `${10 + i}`,
       name: `Подпроект ${i}`,
-      parent: parentId,
+      parentId: parentId,
       type: 'Проект',
       denotation: `SUB-${i}`,
       responsiblePerson: `Менеджер ${i}`,
@@ -37,7 +37,7 @@ export const generateTreeProjects = (): Partial<ProjectItemTreeSimple>[] => {
       id: `${100 + i}`,
       guid: `${100 + i}`,
       name: `Задача ${i}`,
-      parent: parentId,
+      parentId: parentId,
       type: 'Задача',
       denotation: `TASK-${i}`,
       responsiblePerson: `Исполнитель ${i}`,
@@ -55,7 +55,7 @@ export const generateTreeProjectsIds = (): Partial<ProjectItemTreeSimple>[] => {
     result.push({
       id: `${i}`,
       guid: `${i}`,
-      parent: null,
+      parentId: null,
     })
   }
 
@@ -65,7 +65,7 @@ export const generateTreeProjectsIds = (): Partial<ProjectItemTreeSimple>[] => {
     result.push({
       id: `${10 + i}`,
       guid: `${10 + i}`,
-      parent: parentId,
+      parentId: parentId,
     })
   }
 
@@ -75,14 +75,14 @@ export const generateTreeProjectsIds = (): Partial<ProjectItemTreeSimple>[] => {
     result.push({
       id: `${100 + i}`,
       guid: `${10 + i}`,
-      parent: parentId,
+      parentId: parentId,
     })
   }
 
   return result
 }
 
-export const generateProjectsWithChildren = (count: number): any[] => {
+export const generateProjectsWithChildren = (count: number): Partial<ProjectItemTreeSimple>[] => {
   // Просто возвращаем any[]
   const projectNames = [
     'Разработка системы',
@@ -131,11 +131,11 @@ export const generateProjectsWithChildren = (count: number): any[] => {
     return id.toString()
   }
 
-  const createProject = (depth: number, maxDepth: number): any => {
+  const createProject = (depth: number, maxDepth: number): ProjectItemTreeSimple => {
     const id = generateUniqueId()
     const hasChildren = depth < maxDepth && Math.random() > 0.3
 
-    const project: any = {
+    const project: ProjectItemTreeSimple = {
       id,
       __hasChildren: hasChildren,
       children: [],
@@ -158,6 +158,8 @@ export const generateProjectsWithChildren = (count: number): any[] => {
       photo: 'some',
       goal: goals[Math.floor(Math.random() * goals.length)],
       projectTime: Math.floor(Math.random() * 365) + 30,
+
+      parentId: null,
     }
 
     if (hasChildren) {
@@ -178,21 +180,7 @@ export const generateProjectsWithChildren = (count: number): any[] => {
 // const projects = generateProjectsWithChildren(50, 4, 6) // примерно 50 узлов всего
 
 // В файле с типами добавьте поля
-export interface ProjectItemSimple {
-  id: string
-  guid: string
-  name: string
-  denotation: string
-  type: string
-  responsiblePerson: string
-  startDate: string
-  endDate: string
-  photo: string
-  goal: string
-  projectTime: number
-  __hasChildren?: boolean // опциональное поле
-  children?: ProjectItemSimple[] // опциональное поле для дочерних элементов
-}
+
 
 export const generateRootTreeData = (): Partial<ProjectItemTreeSimple>[] => {
   return [
@@ -203,7 +191,7 @@ export const generateRootTreeData = (): Partial<ProjectItemTreeSimple>[] => {
       type: 'Проект',
       responsiblePerson: 'Иванов И.И.',
       __hasChildren: true,
-      parent: null,
+      parentId: null,
     },
     {
       id: '2',
@@ -212,7 +200,7 @@ export const generateRootTreeData = (): Partial<ProjectItemTreeSimple>[] => {
       type: 'Подпроект',
       responsiblePerson: 'Петров П.П.',
 
-      parent: null,
+      parentId: null,
     },
     {
       id: '3',
@@ -221,7 +209,7 @@ export const generateRootTreeData = (): Partial<ProjectItemTreeSimple>[] => {
       type: 'Подпроект',
       responsiblePerson: 'Сидоров С.С.',
 
-      parent: null,
+      parentId: null,
     },
 
     {
@@ -231,7 +219,7 @@ export const generateRootTreeData = (): Partial<ProjectItemTreeSimple>[] => {
       type: 'Подпроект',
       responsiblePerson: 'Сидоров С.С.',
 
-      parent: '2',
+      parentId: '2',
     },
     {
       id: '5',
@@ -240,7 +228,7 @@ export const generateRootTreeData = (): Partial<ProjectItemTreeSimple>[] => {
       type: 'Подпроект',
       responsiblePerson: 'Сидоров С.С.',
 
-      parent: null,
+      parentId: null,
     },
   ]
 }
@@ -273,8 +261,7 @@ export const generateChildren = async (
       name: `${randomItem(names)} ${i + 1}`,
       type: randomItem(types),
       responsiblePerson: randomItem(persons),
-      __hasChildren: Math.random() > 0.6, // 40% шанс что есть дети
-      parent: parent.guid,
+      __hasChildren: Math.random() > 0.6,
       parentId: parent.guid,
     })
   }

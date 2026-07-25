@@ -31,7 +31,7 @@ export const TreeListClassic = () => {
         config={{ ...config, columnDrag: true }}
         dragAndDrop={false}
         treeConfig={{
-          parentKey: 'parent',
+          parentKey: 'parentId',
           expandedDefault: ['2'],
           childrenSource: 'parent',
           onExpand: async (item) => {

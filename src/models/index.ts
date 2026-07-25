@@ -14,39 +14,24 @@ export interface ProjectItemSimple {
   endDate: string
 }
 
-export interface ProjectItemTreeSimple {
-  id: string
-  guid: string
-  photo: string
-  name: string
-  denotation: string
-  type: string
-  result: string
-  progress: string
-  responsiblePerson: string
-  projectTime: number
-  goal: string
-  startDate: string
-  endDate: string
-  parent: string | null
-  isExpanded: boolean
-}
 
 export interface ProjectItemTreeSimple {
   id: string
   guid: string
-  photo: string
   name: string
   denotation: string
   type: string
-  result: string
-  progress: string
+
   responsiblePerson: string
-  projectTime: number
-  goal: string
   startDate: string
   endDate: string
-  parent: string | null
+  photo: string
+  goal: string
+  projectTime: number
+
+  parentId: string | null
+  __hasChildren?: boolean
+  children?: ProjectItemTreeSimple[]
 }
 
 export interface Employee {
