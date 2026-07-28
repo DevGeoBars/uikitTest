@@ -2,12 +2,13 @@ import { useRef, useState } from 'react'
 
 import {
   DataGrid,
-  DataGridClassic,
+  DataGridClassic, Dialog,
   TreeList,
   TreeListClassic, TreeViewTest,
 } from '@/components'
 
 import './App.css'
+
 
 type TSelect =
   | 'gridWithOnNeedLoad'
@@ -17,6 +18,20 @@ type TSelect =
   | 'treeView'
 
 function App() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const tools = [
+    {
+      id: 'save',
+      title: 'Сохранить',
+      icon: '💾',
+      onClick: ({ close }: { visible: boolean; close: () => void }) => {
+        console.log('Сохранение...');
+        close();
+      },
+    },
+  ];
   const componentRef = useRef<any>(null)
 
   const [type, setType] = useState<TSelect>('gridWithOnNeedLoad')
@@ -52,13 +67,23 @@ function App() {
             <option value="treeView">TreeView</option>
           </select>
         </div>
+        <button onClick={() => setIsOpen(true)}>Открыть</button>
 
-
+        <Dialog
+          tools={tools}
+          visible={isOpen}
+          size={0.7}
+          onClose={() => setIsOpen(false)}
+          title="Мой диалог"
+          content={<p>Контент</p>}
+          footer={<button onClick={() => setIsOpen(false)}>Закрыть</button>}
+        />
         <button
           onClick={() => console.log('componentRef', componentRef.current)}>
           data ref
         </button>
       </div>
+
     </div>
   )
 }
