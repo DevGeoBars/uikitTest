@@ -1,13 +1,15 @@
 // Dialog.tsx
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import './index.scss';
-import { Button, IconButton, MonoIcon, MonoIconsName, MultiIcon, MultiIconsName } from "@tflex/uikit";
+import { IconButton, MonoIcon, MonoIconsName } from "@tflex/uikit";
+
+type DialogContext = { visible: boolean; close: () => void };
 
 interface Tool {
   id: string;
   title: string;
   icon: string | React.ReactNode;
-  onClick: (context: { visible: boolean; close: () => void }) => void;
+  onClick: (context: DialogContext) => void;
 }
 
 interface DialogProps {
@@ -16,8 +18,8 @@ interface DialogProps {
   onClose?: () => void;
   tools?: Tool[];
   content?: React.ReactNode;
-  footer?: React.ReactNode;
   title?: React.ReactNode;
+  footer?: React.ReactNode;
 }
 
 export const Dialog: React.FC<DialogProps> = ({
@@ -30,6 +32,7 @@ export const Dialog: React.FC<DialogProps> = ({
   title = '',
 }) => {
   const [isMaximized, setIsMaximized] = useState(false);
+  const dialogWidth = isMaximized ? '100vw' : `${size * 100}vw`;
 
   const close = useCallback(() => {
     onClose?.();
@@ -68,7 +71,7 @@ export const Dialog: React.FC<DialogProps> = ({
 
   if (!visible) return null;
 
-  const dialogWidth = isMaximized ? '100vw' : `${size * 100}vw`;
+
 
 
   return (

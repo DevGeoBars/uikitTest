@@ -8,7 +8,7 @@ import {
 } from '@/components'
 
 import './App.css'
-import { MultiIcon, MultiIconsName } from "@tflex/uikit";
+import { Button, IconButton, MonoIcon, MonoIconsName, MultiIcon, MultiIconsName } from "@tflex/uikit";
 
 
 type TSelect =
@@ -75,9 +75,17 @@ function App() {
           visible={isOpen}
           size={0.7}
           onClose={() => setIsOpen(false)}
-          title={<>💾 объект 1</>}
-          content={<p>Контент</p>}
-          footer={<button onClick={() => setIsOpen(false)}>Закрыть</button>}
+          title={<div style={{display: 'flex', alignItems: "center"}}><MultiIcon name={MultiIconsName.Cards_serviceDocumentation} /> Объект 1</div>}
+
+          content={<p>Контент диалога</p>}
+          footer={<div>
+            <Button color="default" variant="text" iconLeft={<MonoIcon name={MonoIconsName.Calendar_titleBack} />} onClick={() => setIsOpen(false)}>
+              Отменить
+            </Button>
+            <Button color="default" variant="text" iconLeft={<MultiIcon name={MultiIconsName.Button_apply} />}>
+              Применить
+            </Button>
+          </div>}
         />
         <button
           onClick={() => console.log('componentRef', componentRef.current)}>
