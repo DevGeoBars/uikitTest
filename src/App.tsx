@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import {
   DataGrid,
@@ -8,6 +8,7 @@ import {
 } from '@/components'
 
 import './App.css'
+import { MultiIcon, MultiIconsName } from "@tflex/uikit";
 
 
 type TSelect =
@@ -25,7 +26,7 @@ function App() {
     {
       id: 'save',
       title: 'Сохранить',
-      icon: '💾',
+      icon:  <MultiIcon name={MultiIconsName.Button_apply} />,
       onClick: ({ close }: { visible: boolean; close: () => void }) => {
         console.log('Сохранение...');
         close();
@@ -74,7 +75,7 @@ function App() {
           visible={isOpen}
           size={0.7}
           onClose={() => setIsOpen(false)}
-          title="Мой диалог"
+          title={<>💾 объект 1</>}
           content={<p>Контент</p>}
           footer={<button onClick={() => setIsOpen(false)}>Закрыть</button>}
         />

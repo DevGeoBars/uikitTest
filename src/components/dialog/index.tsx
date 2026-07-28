@@ -1,6 +1,7 @@
 // Dialog.tsx
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import './index.scss';
+import { Button, IconButton, MonoIcon, MonoIconsName, MultiIcon, MultiIconsName } from "@tflex/uikit";
 
 interface Tool {
   id: string;
@@ -16,12 +17,9 @@ interface DialogProps {
   tools?: Tool[];
   content?: React.ReactNode;
   footer?: React.ReactNode;
-  title?: string;
+  title?: React.ReactNode;
 }
 
-const CloseIcon = () => <span className="dialog__icon-unicode">✕</span>;
-const MaximizeIcon = () => <span className="dialog__icon-unicode">⛶</span>;
-const MinimizeIcon = () => <span className="dialog__icon-unicode">🗗</span>;
 export const Dialog: React.FC<DialogProps> = ({
   size = 1,
   visible = false,
@@ -41,7 +39,7 @@ export const Dialog: React.FC<DialogProps> = ({
     setIsMaximized(prev => !prev);
   }, []);
 
-  const toolContext = useMemo(() => ({
+  const dialogContext = useMemo(() => ({
     visible,
     close,
   }), [visible, close]);
@@ -72,12 +70,6 @@ export const Dialog: React.FC<DialogProps> = ({
 
   const dialogWidth = isMaximized ? '100vw' : `${size * 100}vw`;
 
-  const renderIcon = (icon: string | React.ReactNode) => {
-    if (typeof icon === 'string') {
-      return <span className="dialog__tool-icon">{icon}</span>;
-    }
-    return icon;
-  };
 
   return (
     <div
@@ -85,41 +77,45 @@ export const Dialog: React.FC<DialogProps> = ({
       style={{ width: dialogWidth }}
       role="dialog"
       aria-modal="true"
-      aria-label={title}
     >
       <div className="dialog__header">
         <h2 className="dialog__title">{title}</h2>
 
         <div className="dialog__tools">
           {tools.map((tool) => (
-            <button
+            <IconButton
+              size={'small'}
               key={tool.id}
               className="dialog__tool-btn"
-              onClick={() => tool.onClick(toolContext)}
+              aria-label="Ghost"
               title={tool.title}
-              aria-label={tool.title}
-            >
-              {renderIcon(tool.icon)}
-            </button>
+              icon={tool.icon}
+              onClick={() => tool.onClick(dialogContext)}
+              color="default"
+              variant="outline"
+            />
           ))}
 
-          <button
+          <IconButton
             className="dialog__tool-btn"
+            size={'small'}
+            color="default"
+            variant="outline"
+            aria-label="Ghost"
+            icon={isMaximized ? <MonoIcon name={MonoIconsName.AreaSize_minimizeScreen} /> : <MonoIcon name={MonoIconsName.AreaSize_maximizeScreen} />}
             onClick={toggleMaximize}
-            title={isMaximized ? 'Свернуть' : 'Развернуть на весь экран'}
-            aria-label={isMaximized ? 'Свернуть' : 'Развернуть'}
-          >
-            {isMaximized ? <MinimizeIcon /> : <MaximizeIcon />}
-          </button>
+          />
 
-          <button
-            className="dialog__tool-btn dialog__close-btn"
+          <IconButton
+            className="dialog__tool-btn"
+            size={'small'}
+            color="default"
+            variant="outline"
+            aria-label="Ghost"
+            icon={<MonoIcon name={MonoIconsName.Blind_close} />}
             onClick={close}
-            title="Закрыть"
-            aria-label="Закрыть"
-          >
-            <CloseIcon />
-          </button>
+          />
+
         </div>
       </div>
 

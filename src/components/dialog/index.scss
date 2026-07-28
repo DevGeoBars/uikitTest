@@ -8,7 +8,7 @@ $header-padding: 16px 20px;
 $title-color: #111827;
 $title-font-size: 18px;
 $title-font-weight: 600;
-$tools-gap: 8px;
+
 $tool-btn-size: 36px;
 $tool-btn-radius: 6px;
 $tool-btn-color: #6b7280;
@@ -40,10 +40,10 @@ $transition-speed: 0.3s;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $header-padding;
+    padding: var(--padding-15);
     border-bottom: 1px solid $header-border;
-    background-color: $header-bg;
-    min-height: $header-min-height;
+    background-color: var(--bg1);
+    height: 50px;
   }
 
   &__title {
@@ -60,45 +60,13 @@ $transition-speed: 0.3s;
   &__tools {
     display: flex;
     align-items: center;
-    gap: $tools-gap;
-    margin-left: 16px;
+    gap: var(--gap-10);
+
     flex-shrink: 0;
+
   }
 
-  &__tool-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: $tool-btn-size;
-    height: $tool-btn-size;
-    border: none;
-    background: transparent;
-    border-radius: $tool-btn-radius;
-    cursor: pointer;
-    color: $tool-btn-color;
-    transition: all 0.2s ease;
-    padding: 0;
 
-    svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    &:hover {
-      background-color: $tool-btn-hover-bg;
-      color: $tool-btn-hover-color;
-    }
-
-    &:active {
-      background-color: $tool-btn-active-bg;
-      transform: scale(0.95);
-    }
-
-    &:focus-visible {
-      outline: 2px solid #3b82f6;
-      outline-offset: 2px;
-    }
-  }
 
   &__close-btn {
     &:hover {
@@ -168,13 +136,10 @@ $transition-speed: 0.3s;
     }
 
     &__tools {
-      gap: 4px;
+      gap: var(--gap-5)
     }
 
-    &__tool-btn {
-      width: 32px;
-      height: 32px;
-    }
+
 
     &__content {
       padding: 16px;
