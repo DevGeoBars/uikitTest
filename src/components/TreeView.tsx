@@ -10,7 +10,7 @@ type TreeViewProps = {
 
 export const TreeViewTest: FC<TreeViewProps> = () => {
   const [data, setData] = useState(generateRootTreeData())
-  const [value, setValue] = useState('4')
+  const [value, setValue] = useState('7')
   return (
     <div className="TreeView-container">
       <TreeView

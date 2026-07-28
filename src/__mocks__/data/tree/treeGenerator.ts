@@ -215,7 +215,25 @@ export const generateRootTreeData = (): Partial<ProjectItemTreeSimple>[] => {
     {
       id: '4',
       guid: '4',
-      name: 'Подпроект 2',
+      name: 'Подпроект 4',
+      type: 'Подпроект',
+      responsiblePerson: 'Сидоров С.С.',
+
+      parentId: '2',
+    },
+    {
+      id: '7',
+      guid: '7',
+      name: 'Подпроект 7',
+      type: 'Подпроект',
+      responsiblePerson: 'Сидоров С.С.',
+
+      parentId: '4',
+    },
+    {
+      id: '9',
+      guid: '9',
+      name: 'Подпроект 9',
       type: 'Подпроект',
       responsiblePerson: 'Сидоров С.С.',
 
