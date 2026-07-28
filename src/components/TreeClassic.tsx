@@ -28,7 +28,7 @@ export const TreeListClassic = () => {
         ref={gridRef}
         className={'grid'}
         data={data}
-        config={{ ...config, columnDrag: true }}
+        config={{ ...config, columnDrag: true, hideHeader: true  }}
         dragAndDrop={false}
         treeConfig={{
           parentKey: 'parentId',

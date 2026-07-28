@@ -1,5 +1,5 @@
 import { Grid as GridComponent } from '@tflex/uikit'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { generateTreeProjectsIds } from '@/__mocks__/data/tree/treeGenerator'
 import { fetchTreeData } from '@/components/helpers/fetchTreeData'
@@ -36,7 +36,7 @@ export const TreeList = () => {
         })
 
         console.log('firstPortion', firstPortion)
-
+        setData(firstPortion);
         onDataReceived(firstPortion)
       }}
       lazyRender={{
