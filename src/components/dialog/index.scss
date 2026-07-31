@@ -34,6 +34,7 @@ $dialog-z-index: 1000;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: var(--sc1);
   }
 
   &__tools {
@@ -42,9 +43,6 @@ $dialog-z-index: 1000;
     gap: var(--gap-10);
     flex-shrink: 0;
   }
-
-
-
 
   &__content {
     flex: 1;
